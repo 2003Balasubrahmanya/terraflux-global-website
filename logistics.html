@@ -1,0 +1,228 @@
+<!-- ===== HEADER SECTION START ===== -->
+<header style="position:fixed;top:0;width:100%;background:#0D0D0D;border-bottom:1px solid #D4AF37;z-index:1000;font-family:Georgia,serif;">
+  <div style="max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 8%;">
+    
+    <!-- LOGO -->
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="https://dummyimage.com/120x40/d4af37/000000&text=TF" alt="Company Logo" style="height:40px;border-radius:4px;">
+      <span style="color:#D4AF37;font-size:1.2rem;letter-spacing:2px;font-weight:600;">TERRAFLUX</span>
+    </div>
+
+    <!-- NAVIGATION LINKS -->
+    <nav id="navMenu" style="display:flex;gap:35px;">
+      <a href="index.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Home</a>
+      <a href="about.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">About</a>
+      <a href="logistics.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Logistics</a>
+      <a href="warehousing.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Warehousing</a>
+      <a href="contact.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Contact</a>
+    </nav>
+
+    <!-- HAMBURGER (MOBILE) -->
+    <div id="menuToggle" style="display:none;flex-direction:column;cursor:pointer;">
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+    </div>
+
+  </div>
+
+  <!-- ===== HEADER SCRIPT ===== -->
+  <script>
+    (function(){
+      const nav = document.getElementById("navMenu");
+      const toggle = document.getElementById("menuToggle");
+      const spans = toggle.querySelectorAll("span");
+
+      function checkScreen(){
+        if(window.innerWidth <= 768){
+          nav.style.position = "fixed";
+          nav.style.top = "70px";
+          nav.style.right = "-100%";
+          nav.style.flexDirection = "column";
+          nav.style.background = "#0D0D0D";
+          nav.style.width = "240px";
+          nav.style.height = "100vh";
+          nav.style.padding = "40px 25px";
+          nav.style.transition = "0.4s";
+          toggle.style.display = "flex";
+        } else {
+          nav.style.position = "static";
+          nav.style.flexDirection = "row";
+          nav.style.height = "auto";
+          nav.style.width = "auto";
+          nav.style.padding = "0";
+          nav.style.right = "0";
+          toggle.style.display = "none";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        }
+      }
+
+      toggle.addEventListener("click", function(){
+        if(nav.style.right === "0px"){
+          nav.style.right = "-100%";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        } else {
+          nav.style.right = "0";
+          spans[0].style.transform = "rotate(45deg) translate(5px,5px)";
+          spans[1].style.opacity = "0";
+          spans[2].style.transform = "rotate(-45deg) translate(5px,-5px)";
+        }
+      });
+
+      document.querySelectorAll("#navMenu a").forEach(link=>{
+        link.addEventListener("click", ()=>{
+          if(window.innerWidth <= 768){
+            nav.style.right = "-100%";
+            spans[0].style.transform = "rotate(0) translate(0,0)";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "rotate(0) translate(0,0)";
+          }
+        });
+      });
+
+      window.addEventListener("resize", checkScreen);
+      checkScreen();
+    })();
+  </script>
+</header>
+<!-- ===== HEADER SECTION END ===== -->
+
+<section id="hero" style="position:relative; height:100vh; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:white;">
+
+  <!-- Background Images -->
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=100" class="active">
+    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=2000&q=100">
+    <img src="https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2?auto=format&fit=crop&w=2000&q=100">
+  </div>
+
+  <!-- Soft Dark Gradient -->
+  <div style="position:absolute; inset:0;
+              background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+              z-index:2;"></div>
+
+  <!-- Content -->
+  <div style="position:absolute; top:50%; left:50%;
+              transform:translate(-50%, -50%);
+              text-align:center; z-index:3; width:90%;">
+
+    <h1 style="font-size:3.8em; font-weight:600; letter-spacing:-1px; margin-bottom:20px;">
+      Precision in Motion
+    </h1>
+
+    <p style="font-size:1.3em; opacity:0.85; max-width:700px; margin:auto; margin-bottom:40px;">
+      Seamless global logistics engineered with intelligence,
+      speed and reliability.
+    </p>
+
+    <a href="#contact"
+       style="padding:14px 38px;
+              background:rgba(255,255,255,0.15);
+              border:1px solid rgba(255,255,255,0.3);
+              backdrop-filter:blur(15px);
+              border-radius:50px;
+              color:white;
+              text-decoration:none;
+              font-weight:500;
+              transition:all 0.4s ease;">
+       Get Started →
+    </a>
+
+  </div>
+</section>
+
+<style>
+  .hero-bg {
+    position:absolute;
+    inset:0;
+    z-index:1;
+  }
+
+  .hero-bg img {
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 2.5s ease-in-out, transform 8s ease-in-out;
+    transform:scale(1.1);
+  }
+
+  .hero-bg img.active {
+    opacity:1;
+    transform:scale(1);
+  }
+
+  @media(max-width:768px){
+    #hero h1 {font-size:2.2em;}
+    #hero p {font-size:1em;}
+  }
+</style>
+
+<script>
+  const images = document.querySelectorAll(".hero-bg img");
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }, 5000); // change every 5 seconds
+</script>
+<!-- ============================================== -->
+<!-- ██████  BLACK BACKGROUND WITH GOLDEN TEXT  ██████ -->
+<!-- ============================================== -->
+<section style="background:#000; color:#FFD700; font-family:Georgia, 'Times New Roman', serif; padding:80px 20px; text-align:center;">
+
+  <!-- Section Header -->
+  <h2 style="font-size:3em; margin-bottom:20px; letter-spacing:2px; text-shadow:2px 2px 4px #333;">Terraflux Global Ventures</h2>
+  <p style="font-size:1.3em; max-width:700px; margin:0 auto 40px; line-height:1.6; color:#FFD700CC;">Your foundation in global trade, delivering accessible and scalable supply chain solutions while maintaining integrity and client-focused service.</p>
+
+  <!-- Golden Cards -->
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:30px;">
+    
+    <!-- Card 1 -->
+    <div style="background:#111; border:2px solid #FFD700; border-radius:15px; padding:30px; width:250px; transition:all 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1606813902596-ec60b747c1e2?auto=format&fit=crop&w=400&q=80" alt="Logistics" style="width:100%; border-radius:10px; margin-bottom:20px; transition:transform 0.5s;">
+      <h3 style="margin-bottom:10px;">Global Logistics</h3>
+      <p style="color:#FFD700CC;">Air, Ocean, and Domestic transport solutions to keep your business moving worldwide.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div style="background:#111; border:2px solid #FFD700; border-radius:15px; padding:30px; width:250px; transition:all 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1556740723-b6a63e27c4df?auto=format&fit=crop&w=400&q=80" alt="Warehousing" style="width:100%; border-radius:10px; margin-bottom:20px; transition:transform 0.5s;">
+      <h3 style="margin-bottom:10px;">Warehousing</h3>
+      <p style="color:#FFD700CC;">Intelligent storage and distribution centers optimized for efficiency and reliability.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div style="background:#111; border:2px solid #FFD700; border-radius:15px; padding:30px; width:250px; transition:all 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1591060987102-87c2b994b6cd?auto=format&fit=crop&w=400&q=80" alt="Customs" style="width:100%; border-radius:10px; margin-bottom:20px; transition:transform 0.5s;">
+      <h3 style="margin-bottom:10px;">Customs Clearance</h3>
+      <p style="color:#FFD700CC;">Complete documentation, compliance checks, and port operations for smooth trade.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Inline Hover Effect -->
+<style>
+  .service-card img:hover {
+    transform: scale(1.1);
+  }
+
+  section div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #FFD700AA;
+  }
+
+  @media(max-width:768px){
+    section div {
+      width:90% !important;
+    }
+  }
+</style>

@@ -1,0 +1,92 @@
+<!-- ===== HEADER SECTION START ===== -->
+<header style="position:fixed;top:0;width:100%;background:#0D0D0D;border-bottom:1px solid #D4AF37;z-index:1000;font-family:Georgia,serif;">
+  <div style="max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 8%;">
+    
+    <!-- LOGO -->
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="https://dummyimage.com/120x40/d4af37/000000&text=TF" alt="Company Logo" style="height:40px;border-radius:4px;">
+      <span style="color:#D4AF37;font-size:1.2rem;letter-spacing:2px;font-weight:600;">TERRAFLUX</span>
+    </div>
+
+    <!-- NAVIGATION LINKS -->
+    <nav id="navMenu" style="display:flex;gap:35px;">
+      <a href="index.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Home</a>
+      <a href="about.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">About</a>
+      <a href="logistics.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Logistics</a>
+      <a href="warehousing.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Warehousing</a>
+      <a href="contact.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Contact</a>
+    </nav>
+
+    <!-- HAMBURGER (MOBILE) -->
+    <div id="menuToggle" style="display:none;flex-direction:column;cursor:pointer;">
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+    </div>
+
+  </div>
+
+  <!-- ===== HEADER SCRIPT ===== -->
+  <script>
+    (function(){
+      const nav = document.getElementById("navMenu");
+      const toggle = document.getElementById("menuToggle");
+      const spans = toggle.querySelectorAll("span");
+
+      function checkScreen(){
+        if(window.innerWidth <= 768){
+          nav.style.position = "fixed";
+          nav.style.top = "70px";
+          nav.style.right = "-100%";
+          nav.style.flexDirection = "column";
+          nav.style.background = "#0D0D0D";
+          nav.style.width = "240px";
+          nav.style.height = "100vh";
+          nav.style.padding = "40px 25px";
+          nav.style.transition = "0.4s";
+          toggle.style.display = "flex";
+        } else {
+          nav.style.position = "static";
+          nav.style.flexDirection = "row";
+          nav.style.height = "auto";
+          nav.style.width = "auto";
+          nav.style.padding = "0";
+          nav.style.right = "0";
+          toggle.style.display = "none";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        }
+      }
+
+      toggle.addEventListener("click", function(){
+        if(nav.style.right === "0px"){
+          nav.style.right = "-100%";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        } else {
+          nav.style.right = "0";
+          spans[0].style.transform = "rotate(45deg) translate(5px,5px)";
+          spans[1].style.opacity = "0";
+          spans[2].style.transform = "rotate(-45deg) translate(5px,-5px)";
+        }
+      });
+
+      document.querySelectorAll("#navMenu a").forEach(link=>{
+        link.addEventListener("click", ()=>{
+          if(window.innerWidth <= 768){
+            nav.style.right = "-100%";
+            spans[0].style.transform = "rotate(0) translate(0,0)";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "rotate(0) translate(0,0)";
+          }
+        });
+      });
+
+      window.addEventListener("resize", checkScreen);
+      checkScreen();
+    })();
+  </script>
+</header>
+<!-- ===== HEADER SECTION END ===== -->

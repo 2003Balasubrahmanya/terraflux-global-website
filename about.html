@@ -1,0 +1,491 @@
+<!-- ===== HEADER SECTION START ===== -->
+<header style="position:fixed;top:0;width:100%;background:#0D0D0D;border-bottom:1px solid #D4AF37;z-index:1000;font-family:Georgia,serif;">
+  <div style="max-width:1400px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 8%;">
+    
+    <!-- LOGO -->
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="https://dummyimage.com/120x40/d4af37/000000&text=TF" alt="Company Logo" style="height:40px;border-radius:4px;">
+      <span style="color:#D4AF37;font-size:1.2rem;letter-spacing:2px;font-weight:600;">TERRAFLUX</span>
+    </div>
+
+    <!-- NAVIGATION LINKS -->
+    <nav id="navMenu" style="display:flex;gap:35px;">
+      <a href="index.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Home</a>
+      <a href="about.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">About</a>
+      <a href="logistics.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Logistics</a>
+      <a href="warehousing.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Warehousing</a>
+      <a href="contact.html" style="color:#EDEDED;text-decoration:none;font-size:0.95rem;letter-spacing:1px;">Contact</a>
+    </nav>
+
+    <!-- HAMBURGER (MOBILE) -->
+    <div id="menuToggle" style="display:none;flex-direction:column;cursor:pointer;">
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+      <span style="width:25px;height:3px;background:#D4AF37;margin:4px 0;transition:0.4s;"></span>
+    </div>
+
+  </div>
+
+  <!-- ===== HEADER SCRIPT ===== -->
+  <script>
+    (function(){
+      const nav = document.getElementById("navMenu");
+      const toggle = document.getElementById("menuToggle");
+      const spans = toggle.querySelectorAll("span");
+
+      function checkScreen(){
+        if(window.innerWidth <= 768){
+          nav.style.position = "fixed";
+          nav.style.top = "70px";
+          nav.style.right = "-100%";
+          nav.style.flexDirection = "column";
+          nav.style.background = "#0D0D0D";
+          nav.style.width = "240px";
+          nav.style.height = "100vh";
+          nav.style.padding = "40px 25px";
+          nav.style.transition = "0.4s";
+          toggle.style.display = "flex";
+        } else {
+          nav.style.position = "static";
+          nav.style.flexDirection = "row";
+          nav.style.height = "auto";
+          nav.style.width = "auto";
+          nav.style.padding = "0";
+          nav.style.right = "0";
+          toggle.style.display = "none";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        }
+      }
+
+      toggle.addEventListener("click", function(){
+        if(nav.style.right === "0px"){
+          nav.style.right = "-100%";
+          spans[0].style.transform = "rotate(0) translate(0,0)";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "rotate(0) translate(0,0)";
+        } else {
+          nav.style.right = "0";
+          spans[0].style.transform = "rotate(45deg) translate(5px,5px)";
+          spans[1].style.opacity = "0";
+          spans[2].style.transform = "rotate(-45deg) translate(5px,-5px)";
+        }
+      });
+
+      document.querySelectorAll("#navMenu a").forEach(link=>{
+        link.addEventListener("click", ()=>{
+          if(window.innerWidth <= 768){
+            nav.style.right = "-100%";
+            spans[0].style.transform = "rotate(0) translate(0,0)";
+            spans[1].style.opacity = "1";
+            spans[2].style.transform = "rotate(0) translate(0,0)";
+          }
+        });
+      });
+
+      window.addEventListener("resize", checkScreen);
+      checkScreen();
+    })();
+  </script>
+</header>
+<!-- ===== HEADER SECTION END ===== -->
+
+<!-- ================= HERO SECTION START ================= -->
+<section id="hero" style="
+  width: 100vw; /* full viewport width */
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  overflow: hidden; /* prevent horizontal scroll */
+  padding: 0 20px;
+  box-sizing: border-box; /* include padding in width */
+">
+  <div class="hero-container" style="
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+  ">
+    <!-- Text Left (Desktop) -->
+    <div class="hero-text" style="
+      flex: 1 1 500px;
+      color: white;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s forwards;
+      order: 1;
+      box-sizing: border-box;
+    ">
+      <h1 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2;">
+        Building Innovation, Delivering Excellence
+      </h1>
+      <p style="font-size: 1.2rem; margin-bottom: 30px;">
+        We are committed to delivering top‑notch solutions with integrity, expertise, and passion.
+      </p>
+      <button id="hero-cta" style="
+        padding: 12px 30px;
+        font-size: 1rem;
+        border: none;
+        background: #ff6600;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+      ">Learn More</button>
+    </div>
+
+    <!-- Image Right (Desktop) -->
+    <div class="hero-image" style="
+      flex: 1 1 500px;
+      min-height: 300px;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s forwards;
+      animation-delay: 0.3s;
+      order: 2;
+      max-width: 100%; /* prevent overflow */
+      box-sizing: border-box;
+    "></div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  #hero-cta:hover {
+    background: #e65c00;
+    transform: scale(1.05);
+  }
+
+  /* MOBILE FIX: stack image on top, text below */
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+      width: 100%; /* prevent horizontal overflow */
+    }
+
+    .hero-image {
+      order: 1 !important;
+      width: 100%;
+      min-height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      order: 2 !important;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2rem !important;
+    }
+
+    .hero-text p {
+      font-size: 1rem !important;
+    }
+  }
+
+  /* Fade in hero section after page load */
+  body.loaded #hero div {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fix horizontal scroll if any */
+  html, body {
+    overflow-x: hidden;
+  }
+</style>
+
+<script>
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+  });
+
+  document.getElementById('hero-cta').addEventListener('click', function() {
+    const target = document.getElementById('overview');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+<!-- ================= HERO SECTION END ================= -->
+<!-- ================= ABOUT OVERVIEW SECTION START ================= -->
+<section id="overview" style="
+  width: 100%;
+  padding: 80px 20px;
+  background: #000;
+  box-sizing: border-box;
+  overflow: hidden;
+">
+  <div class="overview-container" style="
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  ">
+    <!-- Section Title -->
+    <h2 style="color:#fff; font-size:2rem; margin-bottom:40px; text-align:center;">About Our Company</h2>
+
+    <!-- Text / Cards -->
+    <div class="overview-text" style="
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom:60px;
+    ">
+      <!-- Mission Card -->
+      <div style="flex:1 1 250px; background:#111; padding:20px; border-radius:10px; text-align:center; margin:10px; box-shadow:0 4px 8px rgba(255,255,255,0.1); opacity:0; transform:translateY(30px); animation:fadeInUp 1.2s forwards; animation-delay:0.2s;">
+        <img src="https://img.icons8.com/color/48/000000/target.png" alt="Mission Icon" style="margin-bottom:10px;">
+        <h3 style="color:#fff; margin-bottom:10px;">Mission</h3>
+        <p style="color:#aaa; font-size:0.95rem;">Deliver innovative solutions with excellence and integrity.</p>
+      </div>
+      <!-- Vision Card -->
+      <div style="flex:1 1 250px; background:#111; padding:20px; border-radius:10px; text-align:center; margin:10px; box-shadow:0 4px 8px rgba(255,255,255,0.1); opacity:0; transform:translateY(30px); animation:fadeInUp 1.2s forwards; animation-delay:0.4s;">
+        <img src="https://img.icons8.com/color/48/000000/eye.png" alt="Vision Icon" style="margin-bottom:10px;">
+        <h3 style="color:#fff; margin-bottom:10px;">Vision</h3>
+        <p style="color:#aaa; font-size:0.95rem;">Be a global leader in delivering impactful solutions.</p>
+      </div>
+      <!-- Values Card -->
+      <div style="flex:1 1 250px; background:#111; padding:20px; border-radius:10px; text-align:center; margin:10px; box-shadow:0 4px 8px rgba(255,255,255,0.1); opacity:0; transform:translateY(30px); animation:fadeInUp 1.2s forwards; animation-delay:0.6s;">
+        <img src="https://img.icons8.com/color/48/000000/handshake.png" alt="Values Icon" style="margin-bottom:10px;">
+        <h3 style="color:#fff; margin-bottom:10px;">Values</h3>
+        <p style="color:#aaa; font-size:0.95rem;">Integrity, innovation, collaboration, customer-centricity.</p>
+      </div>
+    </div>
+
+    <!-- Sliding Images / Partners -->
+    <div class="slider-wrapper" style="width:100%; overflow:hidden; position:relative;">
+      <div class="slider-track" style="display:flex; width:calc(260px * 8); animation:scroll 20s linear infinite;">
+        <!-- 4 Images duplicated -->
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=260&q=80" alt="Partner 1" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=260&q=80" alt="Partner 2" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=260&q=80" alt="Partner 3" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=260&q=80" alt="Partner 4" style="width:100%; border-radius:10px;">
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=260&q=80" alt="Partner 1" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=260&q=80" alt="Partner 2" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=260&q=80" alt="Partner 3" style="width:100%; border-radius:10px;">
+        </div>
+        <div style="flex:0 0 260px; margin:10px;">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=260&q=80" alt="Partner 4" style="width:100%; border-radius:10px;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    0% {opacity:0; transform:translateY(30px);}
+    100% {opacity:1; transform:translateY(0);}
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .slider-wrapper:hover .slider-track {
+    animation-play-state: paused;
+  }
+
+  /* Mobile Responsive */
+  @media(max-width:768px){
+    .overview-text {
+      flex-direction: column;
+      align-items:center;
+    }
+    .overview-text > div {
+      flex:1 1 100% !important;
+      margin-bottom:20px;
+    }
+    .slider-track {
+      flex-wrap: wrap;
+      animation: none;
+    }
+    .slider-track div {
+      flex:0 0 48%;
+      margin:1%;
+    }
+  }
+
+  body.loaded #overview div {
+    opacity:1;
+    transform:translateY(0);
+  }
+</style>
+
+<script>
+  window.addEventListener('load', function(){
+    document.body.classList.add('loaded');
+  });
+</script>
+<!-- ================= ABOUT OVERVIEW SECTION END ================= -->
+<!-- ================= ABOUT IMAGES SLIDING SECTION START ================= -->
+<section id="partners" style="
+  width: 100%;
+  padding: 80px 20px;
+  background: #000;
+  overflow: hidden;
+  box-sizing: border-box;
+">
+  <h2 style="text-align:center; color:#fff; margin-bottom:40px; font-size:2rem;">Our Partners</h2>
+  
+  <div class="slider-wrapper" style="
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  ">
+    <div class="slider-track" style="
+      display: flex;
+      width: calc(250px * 8); /* 4 images duplicated for seamless loop */
+      animation: scroll 20s linear infinite;
+    ">
+      <!-- Image 1 -->
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 1" style="width:100%; border-radius:10px;">
+      </div>
+      <!-- Image 2 -->
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 2" style="width:100%; border-radius:10px;">
+      </div>
+      <!-- Image 3 -->
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 3" style="width:100%; border-radius:10px;">
+      </div>
+      <!-- Image 4 -->
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 4" style="width:100%; border-radius:10px;">
+      </div>
+      <!-- Duplicate for seamless circular loop -->
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 1" style="width:100%; border-radius:10px;">
+      </div>
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 2" style="width:100%; border-radius:10px;">
+      </div>
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 3" style="width:100%; border-radius:10px;">
+      </div>
+      <div style="flex:0 0 250px; margin:10px;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=250&q=80" 
+             alt="Partner 4" style="width:100%; border-radius:10px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Pause on hover */
+  .slider-wrapper:hover .slider-track {
+    animation-play-state: paused;
+  }
+
+  /* Responsive: 2 per row on small screens */
+  @media(max-width:768px){
+    .slider-track {
+      flex-wrap: wrap;
+      animation: none; /* remove sliding on mobile */
+    }
+    .slider-track div {
+      flex: 0 0 48%;
+      margin:1%;
+    }
+  }
+</style>
+<!-- ================= ABOUT IMAGES SLIDING SECTION END ================= -->
+ <!-- ===== FOOTER START ===== -->
+<footer style="background:#0D0D0D;color:#EDEDED;font-family:Georgia,serif;padding:50px 5%;">
+  <div style="max-width:1400px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;">
+    
+    <!-- ABOUT US -->
+    <div style="flex:1 1 220px;">
+      <h3 style="color:#D4AF37;margin-bottom:15px;">About Us</h3>
+      <p style="font-size:0.9rem;line-height:1.6;">
+        Terraflux Global Ventures is a leader in logistics, warehousing, and supply chain solutions, connecting businesses worldwide with efficiency and precision.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div style="flex:1 1 150px;">
+      <h3 style="color:#D4AF37;margin-bottom:15px;">Quick Links</h3>
+      <ul style="list-style:none;padding:0;">
+        <li><a href="index.html" style="color:#EDEDED;text-decoration:none;font-size:0.9rem;">Home</a></li>
+        <li><a href="about.html" style="color:#EDEDED;text-decoration:none;font-size:0.9rem;">About</a></li>
+        <li><a href="logistics.html" style="color:#EDEDED;text-decoration:none;font-size:0.9rem;">Logistics</a></li>
+        <li><a href="warehousing.html" style="color:#EDEDED;text-decoration:none;font-size:0.9rem;">Warehousing</a></li>
+        <li><a href="contact.html" style="color:#EDEDED;text-decoration:none;font-size:0.9rem;">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div style="flex:1 1 220px;">
+      <h3 style="color:#D4AF37;margin-bottom:15px;">Contact Us</h3>
+      <p style="font-size:0.9rem;line-height:1.6;">
+        📧 info@terrafluxglobal.com<br>
+        📞 +91 98765 43210<br>
+        📍 123 Business Avenue, Mumbai, India
+      </p>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div style="flex:1 1 150px;">
+      <h3 style="color:#D4AF37;margin-bottom:15px;">Follow Us</h3>
+      <div style="display:flex;gap:10px;font-size:1.2rem;">
+        <a href="#" style="color:#EDEDED;text-decoration:none;">🔗</a>
+        <a href="#" style="color:#EDEDED;text-decoration:none;">🐦</a>
+        <a href="#" style="color:#EDEDED;text-decoration:none;">📸</a>
+        <a href="#" style="color:#EDEDED;text-decoration:none;">📘</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div style="text-align:center;margin-top:40px;border-top:1px solid #D4AF37;padding-top:20px;font-size:0.85rem;color:#EDEDED;">
+    &copy; 2026 Terraflux Global Ventures. All Rights Reserved.
+  </div>
+</footer>
+<!-- ===== FOOTER END ===== -->
